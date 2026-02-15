@@ -4,56 +4,56 @@ import datetime
 # --- 1. CONFIG & THEME ---
 st.set_page_config(page_title="Ayati", page_icon="🎀", layout="wide")
 
-# ADVANCED CSS FOR READABILITY & CONTRAST
+# HIGH CONTRAST DARK MODE CSS
 st.markdown("""
     <style>
-    /* Background Gradient */
-    .stApp { background: linear-gradient(135deg, #fff5f7 0%, #fce7f3 100%); }
+    /* Background: Deep Pink Gradient */
+    .stApp { background: linear-gradient(135deg, #4d0221 0%, #831843 100%); }
     
-    /* Global Text Settings */
-    html, body, [class*="css"]  {
-        color: #500724 !important; /* Dark Berry for high contrast */
-        font-size: 110% !important; /* Larger general text */
+    /* Text Color: Light Pink/White for High Visibility */
+    html, body, [class*="css"], label, p {
+        color: #fce7f3 !important; 
+        font-size: 115% !important;
+        font-weight: 600;
     }
 
-    /* Action Cards with White Glow */
+    /* Action Cards: Deep Berry Glass (No White!) */
     .action-card {
-        background: rgba(255, 255, 255, 0.9); /* More solid white background */
+        background: rgba(45, 0, 18, 0.8) !important; /* Deep Dark Berry */
         border-radius: 20px;
         padding: 25px;
-        border: 2px solid #f9a8d4;
-        box-shadow: 0 8px 32px 0 rgba(219, 39, 119, 0.15);
+        border: 2px solid #db2777; /* Bright Pink Border */
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         text-align: center;
         margin-bottom: 20px;
     }
 
-    /* Make Headers Bold and Dark */
+    /* Headers: Bright Neon Pink */
     h1, h2, h3, h4 {
-        color: #831843 !important; 
-        font-weight: 800 !important;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #f472b6 !important; 
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
-    /* Navigation Labels */
+    /* Navigation Sections */
     .st-expanderHeader {
+        background-color: #500724 !important;
+        color: #fbcfe8 !important;
+        border: 1px solid #db2777 !important;
         font-size: 1.3rem !important;
-        font-weight: bold !important;
-        color: #be185d !important;
-        background-color: white !important;
-        border-radius: 10px;
     }
 
-    /* Sidebar Contrast */
+    /* Sidebar: Dark Background */
     [data-testid="stSidebar"] { 
-        background-color: #fdf2f8 !important; 
-        border-right: 3px solid #f9a8d4;
+        background-color: #2d0012 !important; 
+        border-right: 2px solid #f472b6;
     }
     
-    /* Input Labels */
-    label {
-        font-size: 1.1rem !important;
-        font-weight: 600 !important;
-        color: #500724 !important;
+    /* Buttons: Neon Glow */
+    .stButton>button {
+        background: linear-gradient(90deg, #db2777, #be185d) !important;
+        color: white !important;
+        border: 1px solid #f9a8d4 !important;
+        font-weight: bold;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -78,43 +78,36 @@ if not check_password():
     st.stop()
 
 # --- 3. THE DASHBOARD ---
-st.markdown("<h1 style='text-align: center; margin-bottom: 10px;'>🌸 AYATI 🌸</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 1.2rem; font-weight: 600;'>The Road to 130 lbs: Tiny Waist & Big Glutes</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🌸 AYATI 🌸</h1>", unsafe_allow_html=True)
 
-# STATS CARDS
+# STATS CARDS (High Visibility Dark Background)
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.markdown('<div class="action-card"><h3>📏 Waist</h3><h2 style="color:#db2777;">33"</h2><p>Goal: 29"</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="action-card"><h3>📏 Waist</h3><h2 style="color:#f472b6;">33"</h2><p>Goal: 29"</p></div>', unsafe_allow_html=True)
 with col2:
-    st.markdown('<div class="action-card"><h3>🍑 Glutes</h3><h2 style="color:#db2777;">42"</h2><p>Puffy & Rounded</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="action-card"><h3>🍑 Glutes</h3><h2 style="color:#f472b6;">42"</h2><p>Puffy & Rounded</p></div>', unsafe_allow_html=True)
 with col3:
     curr_w = st.sidebar.number_input("Weight (lbs)", value=165.0)
     st.sidebar.progress(max(0.0, min(1.0, (165-curr_w)/(165-130))))
-    st.markdown(f'<div class="action-card"><h3>⚖️ Weight</h3><h2 style="color:#db2777;">{curr_w} lbs</h2><p>{165-curr_w} lbs lost</p></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="action-card"><h3>⚖️ Weight</h3><h2 style="color:#f472b6;">{curr_w} lbs</h2><p>{165-curr_w} lbs lost</p></div>', unsafe_allow_html=True)
 
-# APP NAVIGATION
+# NAVIGATION
 st.write("---")
 with st.expander("🕒 MY DAILY ROUTINE", expanded=True):
-    st.subheader("Morning Actions")
-    st.write("✅ **05:30 AM:** Stomach Vacuums (3 sets)")
-    st.subheader("Evening Actions")
-    st.write("✅ **06:05 PM:** Iftar + 5g Creatine")
-    st.write("✅ **07:30 PM:** Heavy Glute Growth Lifting")
+    st.write("✅ **05:30 AM:** Stomach Vacuums")
+    st.write("✅ **06:05 PM:** Iftar + Creatine")
+    st.write("✅ **07:30 PM:** Heavy Glute Growth")
 
 with st.expander("📚 ACADEMICS & WORK"):
-    exam = st.text_input("What's the Exam or Homework?")
-    date = st.date_input("Deadline Date")
-    if st.button("Add to My Planner"):
-        st.success(f"Tracked: {exam} for {date}")
+    exam = st.text_input("Exam or Homework?")
+    date = st.date_input("Deadline")
+    if st.button("Add to Planner"):
+        st.success(f"Tracked: {exam}")
 
 with st.expander("🕌 SPIRITUAL GOALS"):
-    st.checkbox("Fajr Prayer")
-    st.checkbox("Dhuhr Prayer")
-    st.checkbox("Asr Prayer")
-    st.checkbox("Maghrib Prayer (Iftar)")
-    st.checkbox("Isha Prayer")
+    st.checkbox("Prayed all 5 today")
 
 with st.expander("📸 LOG MEASUREMENTS"):
-    st.number_input("Update Waist (inches)", value=33.0)
-    st.number_input("Update Glutes (inches)", value=42.0)
-    st.button("Save New Measurements")
+    st.number_input("New Waist", value=33.0)
+    st.number_input("New Glutes", value=42.0)
+    st.button("Save Stats")
