@@ -1,3 +1,5 @@
 streamlit
 pandas
 openfoodfacts
+opencv-python-headless
+pyzbar
